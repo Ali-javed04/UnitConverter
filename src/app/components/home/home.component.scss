@@ -1,0 +1,63 @@
+.bg-left {
+  height: 100vh;
+
+
+background: linear-gradient(90deg, rgba(201, 137, 221, 0.9) -8.54%, rgba(133, 202, 250, 0.9) 108.12%);
+}
+.desh-li:hover {
+  background: rgb(0, 0, 14);
+  color: white;
+}
+.dashboard-menu ul {
+  color: white;
+  font-size: 14px;
+  line-height: 17px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize;
+}
+.dashboard-menu > ul > li {
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+}
+.dashboard-menu ul li {
+  line-height: inherit;
+  width: 100%;
+}
+.dashboard-menu > ul > li > a {
+  color: white;
+  display: block;
+  padding: 16px 20px;
+}
+.dashboard-menu ul li a i {
+  font-size: 16px;
+  margin-right: 10px;
+  width: 16px;
+}
+.dashboard-menu ul li a span {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+  color: white;
+}
+.active {
+  background: #4187f0;
+  color:blanchedalmond !important;
+}
+.custom-btn {
+  width: 100%;
+  margin-top: 22px;
+    color: white;
+    background: linear-gradient(90deg, rgba(201, 137, 221, 0.9) -8.54%, rgba(133, 202, 250, 0.9) 108.12%);
+}
+.custom-center {
+  justify-content: center;
+  display: flex;
+}
+.custom-border {
+  border: 1px solid  rgba(201, 137, 221, 0.9) -8.54%;
+  background: #fcfcfc;
+  border-radius: 15px;
+  padding: 25px;
+}

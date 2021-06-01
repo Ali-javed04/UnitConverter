@@ -1,0 +1,213 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3 bg-left">
+      <nav class="dashboard-menu">
+        <ul>
+
+          <li class="desh-li" [ngClass]="{'active': currentState('all')}">
+            <a (click)="activePage('all')">
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+              <span>ALL Converter</span>
+            </a>
+          </li>
+          <li class="desh-li" [ngClass]="{'active': currentState('distance')}">
+            <a (click)="activePage('distance')">
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+              <span>Distance Convertor</span>
+            </a>
+          </li>
+          <li class="desh-li" [ngClass]="{'active': currentState('volume')}">
+            <a (click)="activePage('volume')">
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+              <span>Volume Converter</span>
+            </a>
+          </li>
+          <li class="desh-li" [ngClass]="{'active': currentState('speed')}">
+            <a (click)="activePage('speed')">
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+              <span>Speed Converter</span>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+
+
+    </div>
+    <div class="col-9">
+      <div class="all" *ngIf="currentState('all')">
+        <div class="container mt-4 mb-4 pl-4 pr-4">
+          <div class="row text-center">
+            <h2>All Unit Converter</h2>
+          </div>
+          <div class="row custom-center">
+            <div class="col-8 custom-border">
+              <div class="form-group row mb-4">
+                <div class="form-group mt-4 ">
+                  <label>Select Category</label>
+                  <select class="form-control mt-3" (change)="changeCategory($event.target.value)">
+                    <option value="">Select Category</option>
+                    <option value="1">Distance</option>
+                    <option value="2">Volume</option>
+                    <option value="3">Speed</option>
+                  </select>
+                </div>
+                <div class="form-group mt-4 ">
+                  <label>Select Converter</label>
+                  <select class="form-control mt-3" [(ngModel)]="selectedConvertor">
+                    <option *ngFor="let convertor of SelectedCategoryConverter" [ngValue]="convertor.convertersId">
+                      {{convertor.name}}</option>
+
+                  </select>
+                </div>
+              </div>
+              <!-- 2nd row  -->
+              <div class="form-group row  mb-4">
+                <div class="form-group  ">
+                  <label>Enter your Value</label>
+                  <input type="number" class="form-control mt-3" placeholder="e.g 2324" [(ngModel)]="selectedValue">
+
+                </div>
+                <div class="form-group mt-4 ">
+                  <button class="btn custom-btn" (click)="getResult()">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+
+      <!-- distance  -->
+      <div class="distance" *ngIf="currentState('distance')">
+        <div class="container mt-4 mb-4 pl-4 pr-4">
+          <div class="row text-center">
+            <h2>Distance Converter</h2>
+          </div>
+          <div class="row custom-center">
+            <div class="col-8 custom-border">
+              <div class="form-group row mb-4">
+                <div class="form-group mt-4 ">
+                  <label>Select Category</label>
+                  <select class="form-control mt-3">
+                    <option value="1">Distance</option>
+                  </select>
+                </div>
+                <div class="form-group mt-4 ">
+                  <label>Select Converter</label>
+                  <select class="form-control mt-3" [(ngModel)]="selectedConvertor">
+                    <option value="1">Kilometers --> Miles</option>
+                    <option value="2">Foot --> Meters</option>
+
+                  </select>
+                </div>
+              </div>
+              <!-- 2nd row  -->
+              <div class="form-group row  mb-4">
+                <div class="form-group  ">
+                  <label>Enter your Value</label>
+                  <input type="number" class="form-control mt-3" placeholder="e.g 2324" [(ngModel)]="selectedValue">
+
+                </div>
+                <div class="form-group mt-4 ">
+                  <button class="btn custom-btn" (click)="getDistanceResult()">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+
+      <!-- volume  -->
+      <div class="volume" *ngIf="currentState('volume')">
+        <div class="container mt-4 mb-4 pl-4 pr-4">
+          <div class="row text-center">
+            <h2>Volume Converter</h2>
+          </div>
+          <div class="row custom-center">
+            <div class="col-8 custom-border">
+              <div class="form-group row mb-4">
+                <div class="form-group mt-4 ">
+                  <label>Select Category</label>
+                  <select class="form-control mt-3">
+                    <option value="2">Volume</option>
+                  </select>
+                </div>
+                <div class="form-group mt-4 ">
+                  <label>Select Converter</label>
+                  <select class="form-control mt-3" [(ngModel)]="selectedConvertor">
+                    <option value="3">Ounces --> Liters</option>
+                    <option value="4">Gallons --> Liters</option>
+
+                  </select>
+                </div>
+              </div>
+              <!-- 2nd row  -->
+              <div class="form-group row  mb-4">
+                <div class="form-group  ">
+                  <label>Enter your Value</label>
+                  <input type="number" class="form-control mt-3" placeholder="e.g 2324" [(ngModel)]="selectedValue">
+
+                </div>
+                <div class="form-group mt-4 ">
+                  <button class="btn custom-btn" (click)="getVolumeResult()">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+
+      <!-- speed  -->
+      <div class="speed" *ngIf="currentState('speed')">
+        <div class="container mt-4 mb-4 pl-4 pr-4">
+          <div class="row text-center">
+            <h2>Speed Converter</h2>
+          </div>
+          <div class="row custom-center">
+            <div class="col-8 custom-border">
+              <div class="form-group row mb-4">
+                <div class="form-group mt-4 ">
+                  <label>Select Category</label>
+                  <select class="form-control mt-3">
+                    <option value="3">Speed</option>
+                  </select>
+                </div>
+                <div class="form-group mt-4 ">
+                  <label>Select Converter</label>
+                  <select class="form-control mt-3" [(ngModel)]="selectedConvertor">
+                    <option value="5">Kilometer/hour --> Meters/sec</option>
+                    <option value="6">Kilometer/hour --> Knots</option>
+
+                  </select>
+                </div>
+              </div>
+              <!-- 2nd row  -->
+              <div class="form-group row  mb-4">
+                <div class="form-group  ">
+                  <label>Enter your Value</label>
+                  <input type="number" class="form-control mt-3" placeholder="e.g 2324" [(ngModel)]="selectedValue">
+
+                </div>
+                <div class="form-group mt-4 ">
+                  <button class="btn custom-btn" (click)="getSpeedResult()">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
